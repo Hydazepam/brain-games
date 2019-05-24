@@ -8,3 +8,6 @@ start:
 
 publish:
 	publish --dry-run
+
+lint:
+	npx eslint .

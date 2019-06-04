@@ -31,6 +31,7 @@ export const brainEven = () => {
       console.log(result);
     }
     console.log(`Congratulations, ${userName}!`);
+    return '';
   };
 
   isEven();

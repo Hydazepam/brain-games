@@ -6,4 +6,8 @@
 
 [![Build Status](https://travis-ci.org/Hydazepam/project-lvl1-s508.svg?branch=master)](https://travis-ci.org/Hydazepam/project-lvl1-s508)
 
+brain-even
 [![asciicast](https://asciinema.org/a/MGw4kGm42x6trmExdAsOylMvB.svg)](https://asciinema.org/a/MGw4kGm42x6trmExdAsOylMvB)
+
+brain-calc
+[![asciicast](https://asciinema.org/a/Zmr3gvuxuRJa7FReIRVamgkhh.svg)](https://asciinema.org/a/Zmr3gvuxuRJa7FReIRVamgkhh)

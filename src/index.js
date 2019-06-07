@@ -36,3 +36,69 @@ export const brainEven = () => {
 
   isEven();
 };
+
+export const brainCalc = () => {
+  console.log('Welcome to the Brain Games!\nWhat is the result of the expression?\n');
+
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName} !\n`);
+
+  const calc = () => {
+    const gameRounds = 3;
+    const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+    const randomSign = (currentSign) => {
+      switch (currentSign) {
+        case 1:
+          return '+';
+        case 2:
+          return '-';
+        case 3:
+          return '*';
+        default:
+          return 'default';
+      }
+    };
+
+    for (let i = 1; i <= gameRounds; i += 1) {
+      const firstNum = randomNum(1, 101);
+      const secNum = randomNum(1, 101);
+      const curSign = randomSign(randomNum(1, 4));
+      const calcQuestion = () => `${firstNum} ${curSign} ${secNum}`;
+
+      console.log(`Question: ${calcQuestion()}`);
+      const curAnswer = readlineSync.question('Your answer: ');
+
+      const curResult = () => {
+        let result;
+        switch (curSign) {
+          case '+':
+            result = firstNum + secNum;
+            break;
+          case '-':
+            result = firstNum - secNum;
+            break;
+          case '*':
+            result = firstNum * secNum;
+            break;
+          default:
+            return 'default';
+        }
+        return result;
+      };
+
+      let result;
+      if (Number(curAnswer) === curResult()) {
+        result = 'Correct';
+      } else {
+        result = `'${curAnswer}' is wrong answer ;(. Correct answer was '${curResult()}'.\nLet's try again, ${userName}!`;
+        console.log(result);
+        return result;
+      }
+      console.log(result);
+    }
+    console.log(`Congratulations, ${userName}!`);
+    return '';
+  };
+
+  calc();
+};

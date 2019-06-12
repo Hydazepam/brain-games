@@ -158,3 +158,51 @@ export const brainGcd = () => {
 
   gcd();
 };
+
+export const brainProgr = () => {
+  console.log('Welcome to the Brain Games!\nWhat number is missing in the progression?\n');
+
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName} !\n`);
+
+  const game = () => {
+    const gameRounds = 3;
+    const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+    for (let i = 1; i <= gameRounds; i += 1) {
+      const start = randomNum(1, 101);
+      const step = randomNum(1, 11);
+      const length = 10;
+      const question = randomNum(0, 10);
+
+      const progrGame = () => {
+        const result = [start];
+        for (let n = 1; n < length; n += 1) {
+          const nextNum = start + step * n;
+          result.push(nextNum);
+        }
+        return result;
+      };
+      const progr = progrGame();
+      const check = progr[question];
+      progr[question] = '..';
+      const que = String(progr).replace(/,/g, ' ');
+
+      console.log(`Question: ${que}`);
+      const curAnswer = readlineSync.question('Your answer: ');
+      let result;
+      if (curAnswer === String(check)) {
+        result = 'Correct';
+      } else {
+        result = `'${curAnswer}' is wrong answer ;(. Correct answer was '${check}'.\nLet's try again, ${userName}!`;
+        console.log(result);
+        return result;
+      }
+      console.log(result);
+    }
+    console.log(`Congratulations, ${userName}!`);
+    return '';
+  };
+
+  game();
+};

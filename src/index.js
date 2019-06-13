@@ -206,3 +206,50 @@ export const brainProgr = () => {
 
   game();
 };
+
+export const brainPrime = () => {
+  console.log('Welcome to the Brain Games!\nAnswer "yes" if given number is prime. Otherwise answer "no".\n');
+
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName} !\n`);
+
+  const game = () => {
+    const gameRounds = 3;
+    const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+    for (let i = 1; i <= gameRounds; i += 1) {
+      const question = randomNum(1, 501);
+
+      const isPrime = () => {
+        if (question > 1) {
+          for (let n = 2; n < question; n += 1) {
+            if (question % n === 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+        return false;
+      };
+
+      const check = isPrime();
+
+      console.log(`Question: ${question}`);
+      const curAnswer = readlineSync.question('Your answer: ');
+
+      let result;
+      if ((curAnswer === 'yes' && check === true) || (curAnswer === 'no' && check === false)) {
+        result = 'Correct';
+      } else {
+        result = `'${curAnswer}' is wrong answer ;(.\nLet's try again, ${userName}!`;
+        console.log(result);
+        return result;
+      }
+      console.log(result);
+    }
+    console.log(`Congratulations, ${userName}!`);
+    return '';
+  };
+
+  game();
+};

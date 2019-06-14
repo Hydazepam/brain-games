@@ -1,7 +1,7 @@
 {
   "name": "project-akademius",
   "version": "0.8.0",
-  "description": "",
+  "description": "Hydazepam's Hexlet project Brain Games 20 may → 20 june 2019",
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",

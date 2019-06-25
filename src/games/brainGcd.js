@@ -1,0 +1,53 @@
+import { gamePlay, randomNum } from '../index';
+
+const task = 'Find the greatest common divisor of given numbers.';
+
+const cons = (a, b) => (message) => {
+  switch (message) {
+    case 'car':
+      return a;
+    case 'cdr':
+      return b;
+    default:
+      return 'default';
+  }
+};
+
+const car = pair => pair('car');
+const cdr = pair => pair('cdr');
+
+const currentData = () => {
+  const firstNum = randomNum(1, 101);
+  const secondNum = randomNum(1, 101);
+
+  const question = `${firstNum} ${secondNum}`;
+
+  const checkCorrectAnswer = () => {
+    let result;
+    if (firstNum > secondNum) {
+      for (let x = secondNum; x > 0; x -= 1) {
+        if (firstNum % x === 0 && secondNum % x === 0) {
+          result = x;
+          return String(result);
+        }
+      }
+    } else if (firstNum < secondNum) {
+      for (let x = firstNum; x > 0; x -= 1) {
+        if (firstNum % x === 0 && secondNum % x === 0) {
+          result = x;
+          return String(result);
+        }
+      }
+    }
+    return String(firstNum);
+  };
+
+  const answer = checkCorrectAnswer();
+
+  return cons(question, answer);
+};
+
+const currentQuestion = currentRound => car(currentRound);
+const currentAnswer = currentRound => cdr(currentRound);
+
+export default () => gamePlay(task, currentData, currentQuestion, currentAnswer);

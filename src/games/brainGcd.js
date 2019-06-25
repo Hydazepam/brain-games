@@ -1,4 +1,4 @@
-import { cons, car, cdr } from 'hexlet-pairs';
+import { cons, car, cdr } from '@hexlet/pairs';
 import { gamePlay, randomNum } from '../index';
 
 const task = 'Find the greatest common divisor of given numbers.';

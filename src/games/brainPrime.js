@@ -1,4 +1,4 @@
-import { cons, car, cdr } from 'hexlet-pairs';
+import { cons, car, cdr } from '@hexlet/pairs';
 import { gamePlay, randomNum } from '../index';
 
 const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';

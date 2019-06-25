@@ -31,6 +31,7 @@
   "author": "Anton Kostianetskyi",
   "license": "ISC",
   "dependencies": {
+    "@hexlet/pairs": "^1.0.9",
     "package.json": "^2.0.1",
     "readline-sync": "^1.4.9"
   },

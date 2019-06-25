@@ -1,20 +1,7 @@
+import { cons, car, cdr } from 'hexlet-pairs';
 import { gamePlay, randomNum } from '../index';
 
 const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-const cons = (a, b) => (message) => {
-  switch (message) {
-    case 'car':
-      return a;
-    case 'cdr':
-      return b;
-    default:
-      return 'default';
-  }
-};
-
-const car = pair => pair('car');
-const cdr = pair => pair('cdr');
 
 const currentData = () => {
   const question = randomNum(1, 501);

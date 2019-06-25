@@ -1,3 +1,4 @@
+import { cons, car, cdr } from 'hexlet-pairs';
 import { gamePlay, randomNum } from '../index';
 
 const task = 'What is the result of the expression?';
@@ -14,20 +15,6 @@ const randomSign = (num) => {
       return 'default';
   }
 };
-
-const cons = (a, b) => (message) => {
-  switch (message) {
-    case 'car':
-      return a;
-    case 'cdr':
-      return b;
-    default:
-      return 'default';
-  }
-};
-
-const car = pair => pair('car');
-const cdr = pair => pair('cdr');
 
 const currentData = () => {
   const firstNum = randomNum(1, 101);

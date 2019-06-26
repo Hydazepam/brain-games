@@ -11,19 +11,17 @@ const currentData = () => {
 
   const checkCorrectAnswer = () => {
     let result;
+    let devider;
+
     if (firstNum > secondNum) {
-      for (let x = secondNum; x > 0; x -= 1) {
-        if (firstNum % x === 0 && secondNum % x === 0) {
-          result = x;
-          return String(result);
-        }
-      }
-    } else if (firstNum < secondNum) {
-      for (let x = firstNum; x > 0; x -= 1) {
-        if (firstNum % x === 0 && secondNum % x === 0) {
-          result = x;
-          return String(result);
-        }
+      devider = secondNum;
+    }
+    devider = firstNum;
+
+    for (let x = devider; x > 0; x -= 1) {
+      if (firstNum % x === 0 && secondNum % x === 0) {
+        result = x;
+        return String(result);
       }
     }
     return String(firstNum);

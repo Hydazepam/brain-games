@@ -1,26 +1,47 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from '@hexlet/pairs';
 
-const gameRounds = 3;
-const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const roundsCount = 3;
 
-const gamePlay = (task, currentData, currentQuestion, currentAnswer) => {
+const playGame = (task, makeGame) => {
   console.log(`Welcome to the Brain Games!\n${task}\n`);
 
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName} !\n`);
 
-  for (let r = 1; r <= gameRounds; r += 1) {
-    const currentRound = currentData();
-    console.log(`Question: ${currentQuestion(currentRound)}`);
-    const gamerAnswer = readlineSync.question('Your answer: ');
-    const correctAnswer = currentAnswer(currentRound);
+  let resultOfGame;
+  let points = 0;
 
+  for (let i = 1; i <= roundsCount; i += 1) {
+    const roundData = makeGame();
+    console.log(`Question: ${car(roundData)}`);
+    const gamerAnswer = readlineSync.question('Your answer: ');
+    const correctAnswer = cdr(roundData);
+
+    let result;
     if (gamerAnswer === correctAnswer) {
-      console.log('Correct');
+      result = 'Correct';
+    } else {
+      result = `'${gamerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+      console.log(result);
+      break;
     }
-    return `'${gamerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`;
+    console.log(result);
+
+    if (result === 'Correct') {
+      points += 1;
+    } else {
+      points = 0;
+    }
   }
-  return `Congratulations, ${userName}!`;
+
+  if (points === roundsCount) {
+    resultOfGame = `Congratulations, ${userName}!`;
+  } else {
+    resultOfGame = `Let's try again, ${userName}!`;
+  }
+  console.log(resultOfGame);
+  return resultOfGame;
 };
 
-export { gamePlay, randomNum };
+export default playGame;

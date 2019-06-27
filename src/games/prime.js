@@ -8,18 +8,18 @@ const isPrime = (num) => {
   if (num > 1) {
     for (let i = 2; i < num; i += 1) {
       if (num % i === 0) {
-        return false;
+        return 'no';
       }
     }
-    return true;
+    return 'yes';
   }
-  return false;
+  return 'no';
 };
 
 const makeGame = () => {
   const question = random(1, 500);
 
-  const answer = isPrime(question) ? 'yes' : 'no';
+  const answer = isPrime(question);
 
   return cons(question, answer);
 };

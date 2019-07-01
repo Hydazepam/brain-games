@@ -6,22 +6,22 @@ const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   if (num <= 1) {
-    return 'no';
+    return false;
   }
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
-const makeGame = () => {
+const makeRound = () => {
   const question = random(1, 500);
 
-  const answer = isPrime(question);
+  const answer = isPrime(question) ? 'yes' : 'no';
 
   return cons(question, answer);
 };
 
-export default () => playGame(task, makeGame);
+export default () => playGame(task, makeRound);

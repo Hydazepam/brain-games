@@ -16,13 +16,13 @@ const greatCommonDivisor = (first, second) => {
   for (let i = devider; i > 0; i -= 1) {
     if (first % i === 0 && second % i === 0) {
       result = i;
-      return String(result);
+      return result;
     }
   }
-  return String(first);
+  return first;
 };
 
-const makeGame = () => {
+const makeRound = () => {
   const first = random(1, 100);
   const second = random(1, 100);
 
@@ -33,4 +33,4 @@ const makeGame = () => {
   return cons(question, answer);
 };
 
-export default () => playGame(task, makeGame);
+export default () => playGame(task, makeRound);

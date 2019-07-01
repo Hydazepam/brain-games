@@ -5,26 +5,26 @@ import random from '../utils';
 const task = 'What number is missing in the progression?';
 const progressionLength = 10;
 
-const makeGame = () => {
+const progressionData = (a, b, c) => {
+  const progression = [];
+  for (let n = 0; n < c; n += 1) {
+    const element = a + b * n;
+    progression.push(element);
+  }
+  return progression;
+};
+
+const makeRound = () => {
   const start = random(1, 100);
   const step = random(1, 10);
-  const questionPlace = random(0, progressionLength - 1);
+  const questionIndex = random(0, progressionLength - 1);
 
-  const progressionData = () => {
-    const result = [];
-    for (let n = 0; n < progressionLength; n += 1) {
-      const element = start + step * n;
-      result.push(element);
-    }
-    return result;
-  };
-
-  const progression = progressionData();
-  const answer = String(progression[questionPlace]);
-  progression[questionPlace] = '..';
+  const progression = progressionData(start, step, progressionLength);
+  const answer = progression[questionIndex];
+  progression[questionIndex] = '..';
   const question = progression.join(' ');
 
   return cons(question, answer);
 };
 
-export default () => playGame(task, makeGame);
+export default () => playGame(task, makeRound);

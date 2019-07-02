@@ -4,7 +4,8 @@ import { car, cdr } from '@hexlet/pairs';
 const roundsCount = 3;
 
 const playGame = (task, makeRound) => {
-  console.log(`Welcome to the Brain Games!\n${task}\n`);
+  console.log('Welcome to the Brain Games!');
+  console.log(`${task}\n`);
 
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName} !\n`);
@@ -13,7 +14,7 @@ const playGame = (task, makeRound) => {
     const roundData = makeRound();
     console.log(`Question: ${car(roundData)}`);
     const gamerAnswer = readlineSync.question('Your answer: ');
-    const correctAnswer = String(cdr(roundData));
+    const correctAnswer = cdr(roundData);
 
     if (gamerAnswer === correctAnswer) {
       console.log('Correct');

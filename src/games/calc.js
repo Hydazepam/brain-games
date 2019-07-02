@@ -5,9 +5,9 @@ import random from '../utils';
 const task = 'What is the result of the expression?';
 const operations = ['+', '-', '*'];
 
-const calculator = (a, b, c) => {
+const calculateCorrectAnswer = (a, b, operation) => {
   let result;
-  switch (c) {
+  switch (operation) {
     case '+':
       result = a + b;
       break;
@@ -18,7 +18,7 @@ const calculator = (a, b, c) => {
       result = a * b;
       break;
     default:
-      return 'default';
+      return null;
   }
   return result;
 };
@@ -30,7 +30,7 @@ const makeRound = () => {
 
   const question = `${first} ${operation} ${second}`;
 
-  const answer = calculator(first, second, operation);
+  const answer = String(calculateCorrectAnswer(first, second, operation));
 
   return cons(question, answer);
 };

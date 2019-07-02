@@ -4,7 +4,7 @@ import random from '../utils';
 
 const task = 'Find the greatest common divisor of given numbers.';
 
-const greatCommonDivisor = (first, second) => {
+const getGreatCommonDivisor = (first, second) => {
   let result;
   let devider;
 
@@ -28,7 +28,7 @@ const makeRound = () => {
 
   const question = `${first} ${second}`;
 
-  const answer = greatCommonDivisor(first, second);
+  const answer = String(getGreatCommonDivisor(first, second));
 
   return cons(question, answer);
 };
